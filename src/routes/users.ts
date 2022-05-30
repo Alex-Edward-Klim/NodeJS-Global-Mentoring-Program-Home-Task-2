@@ -49,7 +49,7 @@ router.patch('/:id', (req, res) => {
       age: Joi.number().integer().min(4).max(130),
     }).min(1);
 
-    const { error } = schema.validate(req.body);
+    const { error } = schema.validate(req.body, { abortEarly: false, allowUnknown: false });
 
     if (error) {
       res.status(400).send(error.details[0].message);
@@ -103,7 +103,7 @@ router.post('/', (req, res) => {
       .required(),
   });
 
-  const { error } = schema.validate(req.body);
+  const { error } = schema.validate(req.body, { abortEarly: false, allowUnknown: false });
 
   if (error) {
     res.status(400).send(error.details[0].message);
