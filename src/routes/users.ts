@@ -106,7 +106,7 @@ router.post('/', (req, res) => {
   const { error } = schema.validate(req.body, { abortEarly: false, allowUnknown: false });
 
   if (error) {
-    res.status(400).send(error.details[0].message);
+    res.status(400).send(error.details);
   } else if (users.some((user) => user.login === req.body.login && user.isDeleted === false)) {
     res.status(400).send('User already exists');
   } else {
