@@ -4,7 +4,15 @@ import usersRoutes from './routes/users';
 
 const app = express();
 
-app.use(express.json());
+app.use((req, res, next) => {
+  express.json()(req, res, (err) => {
+    if (err) {
+      return res.sendStatus(400);
+    }
+
+    return next();
+  });
+});
 
 app.use('/users', usersRoutes);
 
