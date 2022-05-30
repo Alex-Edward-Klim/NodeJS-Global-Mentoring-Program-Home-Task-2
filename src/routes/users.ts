@@ -43,7 +43,6 @@ router.patch('/:id', (req, res) => {
       login: Joi.string().alphanum(),
 
       password: Joi.string()
-        // .pattern(new RegExp('[A-Za-z0-9]*([a-zA-Z]+[0-9]+|[0-9]+[a-zA-Z]+)')),
         .pattern(/[A-Za-z0-9]*([a-zA-Z]+[0-9]+|[0-9]+[a-zA-Z]+)/),
 
       age: Joi.number().integer().min(4).max(130),
@@ -95,7 +94,6 @@ router.post('/', (req, res) => {
     login: Joi.string().alphanum().required(),
 
     password: Joi.string()
-      // .pattern(new RegExp('[A-Za-z0-9]*([a-zA-Z]+[0-9]+|[0-9]+[a-zA-Z]+)'))
       .pattern(/[A-Za-z0-9]*([a-zA-Z]+[0-9]+|[0-9]+[a-zA-Z]+)/)
       .required(),
 
